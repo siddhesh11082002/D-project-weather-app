@@ -6,8 +6,8 @@ getbtn.addEventListener('click' , getData);
 async function getData(event){
     //testing
     console.log('clicked');
-
-    const city = document.querySelector('#cityName').value;
+    const cityName = document.querySelector('#cityName');
+    let city = cityName.value;
     const apiKey = "639b7f35296b13a9dc11a5d2a4bb65ae";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -24,7 +24,7 @@ async function getData(event){
         <p>Humidity: ${data.main.humidity}%</p>
         <p>Wind Speed: ${data.wind.speed} m/s</p>
         `;
-
+        cityName.value = '';
     } catch (err) {
         document.getElementById("weatherResult").innerHTML = `<p style="color:red ">${err.message}</p>`;
     }
